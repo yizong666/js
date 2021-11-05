@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			table,td{
+				border: 5px solid white;
+			}
+			table{
+				border-collapse: collapse;
+			}
+			td{
+				padding: 5px 10px;
+				text-align: center;
+			}
+			#z{
+				background-color: blue;
+			}
+			#y{
+				background-color: firebrick;
+				width: 400px;
+				text-align: left;
+				padding: 2px;
+			}
+			#sub{
+				background-color: peachpuff;
+			}
+			caption{
+				margin-bottom: 1px;
+				font-size: 30px;
+				font-weight: bold;
+			}
+			/* 一题 */
+			.dg{
+				width:150px;
+				border:1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>一题</h1>
+		<input type="checkbox" id="qqq">全选全不选
+		<input type="button" id="ddd" value="反选">
+		<div class="dg">
+			<input type="checkbox" name="ww">复选框说明信息
+			<input type="checkbox" name="ww">复选框说明信息
+			<input type="checkbox" name="ww">复选框说明信息
+			<input type="checkbox" name="ww">复选框说明信息
+			<input type="checkbox" name="ww">复选框说明信息
+		</div>
+		<hr>
+		<h1>一题</h1>
+		<form action="ok.html" method="get" id="f">
+		姓名：<input type="text"  id="a"><br>
+		密码：<input type="password"  value="" id="b"><br>
+		性别：
+		<input type="radio"  name="c" id="c1">男
+		<input type="radio"  name="c" id="c2">女<br>
+		<label>年龄：</label>
+		<select name="select1">
+			<option value="1">20</option>
+			<option value="2">21</option>
+			<option value="3">23</option><br>
+		</select>
+		<br><label>爱好：</label>
+		<input type="checkbox" name="checkbox1" value="c1" id="like1">读书
+		<input type="checkbox" name="checkbox2" value="c2" id="like2">音乐
+		<input type="checkbox" name="checkbox3" value="c3" id="like3">上网<br>
+		<br><label>简历：</label>
+		<textarea name="textarea1" cols="20" rows="7" id="resume"></textarea><br>
+		<input id="submit" type="submit">
+		<input type="reset" value="重置" ><br>
+		</form>
+		<p id="p1"></p>
+		<hr>
+		
+		<h1>三题</h1>
+		<form action="ok.html" method="get" id="form2">
+		<table>
+			<caption>Information Form</caption> 
+			<tr>
+				<td id="z">
+					<label>name</label>
+				</td> 
+				<td id="y">
+					<input type="text" name="name2" id="name2"><br>
+				</td>
+			</tr>
+			<tr>
+				<td id="z">
+					<label>pwd</label>
+				</td> 
+				<td id="y">
+					<input type="password" name="pwd2" id="pwd2">
+				</td>
+			</tr>
+			<tr>
+				<td id="z">
+					<label>sex</label>
+				</td> 
+				<td id="y">
+					<input type="radio" name="rodio2" id="radio21" >male
+					<input type="radio" name="rodio2" id="radio22">female
+				</td>
+			</tr>
+			<tr>
+				<td id="z">
+					<label>age</label>
+				</td> 
+				<td id="y">
+					<select name="select2">
+						<option value="1">20</option>
+						<option value="2">21</option>
+						<option value="3">23</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td id="z">
+					<label>course</label>
+				</td> 
+				<td id="y">
+					<input type="checkbox" name="checkbox2" value="c1" id="like21" >Chinese
+					<input type="checkbox" name="checkbox2" value="c2" id="like22">Math
+					<input type="checkbox" name="checkbox2" value="c3" id="like23">English
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" id="sub">
+					<input id="submit2" type="submit" value="Submit it!">
+					<input type="reset" value="Reset it!" >
+				</td>
+			</tr>
+			</table>
+			</form>
+			
+		<script>
+			//一题
+			let tt = document.querySelector('#qqq');
+			let yy = document.querySelector('#ddd');
+			let oo = document.getElementsByName('ww');
+			tt.onclick=function(){
+				if(tt.checked===true){
+					for (let i=0; i<oo.length; i++){
+						oo[i].checked=true;
+					}
+				}
+				if(tt.checked===false){
+				
+				for (let i=0; i<oo.length; i++){
+						oo[i].checked=false;
+					}
+				}
+			},
+			yy.onclick=function(){
+				for(let i=0; i<oo.length; i++){
+					oo[i].checked=!oo[i].checked
+				}
+			}
+			{	
+			
+			const f=document.querySelector('#f');
+			let name=document.querySelector('#a');
+			let pw=document.querySelector('#b');
+			let man=document.querySelector('#c1');
+			let woman=document.querySelector('#c2');
+			let like1=document.querySelector('#like1');
+			let like2=document.querySelector('#like2');
+			let like3=document.querySelector('#like3');
+			let resume=document.querySelector('#resume');
+				f.onsubmit=function(r){
+				let pw1=pw.value.length;
+				let resumelen=resume.value.length;
+				if(name.value===''){
+				r.preventDefault(); 
+				alert("姓名不能为空")
+				}else if(pw1<2 || pw1>10){
+					r.preventDefault(); 
+					alert("密码长度二到十位")
+				}else if(man.checked==false && woman.checked==false){
+					r.preventDefault();
+					alert("必须选一个性别")
+				}else if(like1.checked==false && like2.checked==false && like3.checked==false){
+					r.preventDefault();
+					alert("必须选择一个爱好")
+				}else if(resumelen<10){
+					r.preventDefault();
+					alert("简介必须是十个字符")
+				}
+			}
+			}
+			{
+				let p2=document.querySelector('#p2');
+				const form2=document.querySelector('#form2');
+				let name2=document.querySelector('#name2');
+				let pwd2=document.querySelector('#pwd2');
+				let radio21=document.querySelector('#radio21');
+				let radio22=document.querySelector('#radio22');
+				let like21=document.querySelector('#like21');
+				let like22=document.querySelector('#like22');
+				let like23=document.querySelector('#like23');
+				let check=document.getElementsByName('checkbox2');
+				
+					form2.onsubmit=function(o){
+					let pwd2len=pwd2.value.length;
+					let num=0;
+					for(let i=0;i<check.length;i++){
+						if(check[i].checked === true){
+							num++;
+						}
+					}
+					if(name2.value===''){
+					o.preventDefault(); 
+					alert('姓名不能为空');
+					}else if(pwd2len<2 || pwd2len>10){
+						o.preventDefault(); 
+						alert('密码长度2-10位');
+					}else if(radio21.checked==false && radio22.checked==false){
+						o.preventDefault();
+						alert('性别必须选择一项');
+					}else if(num< 2){
+						o.preventDefault();
+						alert('课程至少选择两项');
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
