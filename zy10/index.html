@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>第一题</h1>
+		<input type="text" id="h">
+		<input type="button" id="b" value="添加">
+		<ol id="y"></ol>
+		<input type="button" id="f" value="清空列表">
+		<script src="./jquery/jquery-3.6.0.min.js"></script>
+		<script>
+			
+				$("#b").on("click", function(){ 
+					if(!$('#h').val()){  
+						alert("请填写内容")   
+					}else {
+						
+						$('#y').prepend(`<li id="s"><span id="xx">x</span>${$('#h').val()}</li>`)
+						$('#h').val('')
+						$("#xx").click(function(){ 
+							$(this).parent().remove();  
+						}) ;
+					}
+				});
+				$("#f").on("click", function(){ 
+					$('#y').children().remove()
+				});
+		
+		</script>
+		<hr>
+		<h1>第二题</h1>
+		<p id="pid">1.C2.A3.C4.B5.D6.B7.C8.C9.A10.A11.C12.A13.B14.C15.B16.C17.A18.B19.A20.D</p>
+		<hr>
+		<h1>第三题</h1>
+		<xmp>
+			<?php
+			for ($i=1; $i<=100; $i++){
+				 echo $i," ";
+			}
+			?>
+		</xmp>
+		<hr>
+		<h1>第四题</h1>
+		<xmp>
+			<?php
+			for ($o=1; $o<=100; $o++){
+				if($o%2==0){
+				 echo $o," ";
+				}
+			}
+			?>
+		</xmp>
+		<hr>
+		<h1>第五题</h1>
+		<xmp>
+			<?pha
+			for ($w=1; $w<=100; $w++){
+				if($w%3==0 && $w%5==0){
+					echo "foobar"," ";
+				}else if($w%3==0){
+					echo "foo"," ";
+				}else if($w%5==0){
+					echo "bar"," ";
+				}else{
+					echo $i," ";
+				}
+			}
+			?>
+		</xmp>
+	</body>
+</html>
